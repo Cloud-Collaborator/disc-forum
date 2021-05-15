@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./ultra_pro_plus_max_discussion_forum/
+    ports:
+      - 8000:8000
+    command: >
+      sh -c " python3 manage.py makemigrations &&
+              python3 manage.py migrate &&
+              python3 manage.py runserver 0.0.0.0:8000"
