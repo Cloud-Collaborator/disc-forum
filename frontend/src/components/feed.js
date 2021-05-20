@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import axiosInstance from '../axios';
 
 // Material-UI
@@ -10,14 +9,11 @@ import Link from '@material-ui/core/Link';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import CardMedia from '@material-ui/core/CardMedia';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import EditIcon from '@material-ui/icons/Edit';
-import Button from '@material-ui/core/Button';
 
 // Theme
 
 import theme from './theme';
-import { CardContent, CardHeader, createMuiTheme, Grid, ThemeProvider, Typography } from "@material-ui/core";
+import { CardContent, Grid, ThemeProvider, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -64,11 +60,11 @@ const Posts = (props) => {
                     <Grid container spacing={5} alignItems="flex-end">
                         {posts.map((post) =>{
                             return (
-                                <Grid item key = { post.id } xs={ 12 } md={ 4 } color="#424242">
+                                <Grid item key = { post.id } xs={ 12 } md={ 4 }>
                                     <Link color="secondary" href={ "/" } className={ classes.link }>
                                         <CardMedia className={ classes.cardMedia } image={ post.media } title="Image title" />
                                     </Link>
-                                    <CardContent className={ classes.cardConten }>
+                                    <CardContent className={ classes.cardContent }>
                                         <Typography gutterBottom variant="h4" component="h2" color="secondary" className={ classes.postTitle }>{ post.title.substr(0, 50) }...</Typography>
                                         <div className={ classes.postText }>
                                             <Typography color="secondary">{ post.content.substr(0, 40) }</Typography>
@@ -120,7 +116,7 @@ export default function Feed(){
         <ThemeProvider theme={ theme }>
         <CssBaseline />
         <div className="feed">
-            <Paper elevation = { 8 } stype = { { padding: 8, backgroundColor: "primary", border: "1px" } }>
+            <Paper elevation = { 12 } stype = { { padding: 4, backgroundColor: "primary", border: "1px" } }>
             <Typography component="h1" variant="h2" color="secondary" className={ classes.link }>Latest Posts</Typography>
             </Paper>
             <PostLoading isLoading={ appState.loading } posts={ appState.posts } />
