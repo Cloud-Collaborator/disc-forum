@@ -2,23 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './index.css';
-// import Header from './components/header';
-// import Footer from './components/footer';
+import Header from './components/header';
+import Footer from './components/footer';
 import Login from './components/login';
 import Register from './components/register';
+import Feed from './components/feed';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const routing = (
   <Router>
     <React.StrictMode>
-      {/* <Header/> */}
+      <Header/>
         <Switch>
-          <Route exact path = "/" component = {App} />
+          <Route exact path = "/" component = {Feed} />
           <Route exact path = "/register" component = {Register} />
           <Route exact path = "/login" component = {Login} />
         </Switch>
-      {/* <Footer/> */}
+      <Footer/>
     </React.StrictMode>
   </Router>
 )

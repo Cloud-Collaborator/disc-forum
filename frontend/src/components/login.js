@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // Material UI
 
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,23 +17,32 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+const darkTheme = createMuiTheme({
+	palette: {
+    	type: 'dark',
+  	},	
+})
+
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+		color: "#e2b714",
     },
     avatar: {
         width: theme.spacing(5),
-        backgroundColor: theme.palette.info.dark,
+        backgroundColor: "#e2b714",
     },
     form: {
         width: '100%',
         marginTop: theme.spacing(1),
+		color: "#e2b714",
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+		backgroundColor: "#e2b714",
     },
 }));
 
@@ -74,6 +84,7 @@ export default function SignIn(){
 
     return (
         <Container component="main" maxWidth="xs">
+			<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}></Avatar>
@@ -106,14 +117,14 @@ export default function SignIn(){
 						onChange={handleChange}
 					/>
 					<FormControlLabel
-						control={<Checkbox value="remember" color="primary" />}
-						label="Remember me"
+						control={<Checkbox value="remember" color="inherit"/>}
+						label="Remember Me"
 					/>
 					<Button
 						type="submit"
 						fullWidth
 						variant="contained"
-						color="primary"
+						color="#e2b714"
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
@@ -121,18 +132,19 @@ export default function SignIn(){
 					</Button>
 					<Grid container>
 						<Grid item xs>
-							<Link href="#" variant="body2">
+							<Link href="#" variant="form" color="inherit">
 								Forgot password?
 							</Link>
 						</Grid>
 						<Grid item>
-							<Link href="#" variant="body2">
+							<Link href="/register" variant="body2" color="inherit">
 								{"Don't have an account? Sign Up"}
 							</Link>
 						</Grid>
 					</Grid>
 				</form>
 			</div>
+			</ThemeProvider>
 		</Container>
     );
 }
